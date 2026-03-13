@@ -1,9 +1,17 @@
+from __future__ import annotations
+
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 
 def process_data(
-    X, categorical_features=[], label=None, training=True, encoder=None, lb=None
+    X: pd.DataFrame,
+    categorical_features: list[str] | None = None,
+    label: str | None = None,
+    training: bool = True,
+    encoder: OneHotEncoder | None = None,
+    lb: LabelBinarizer | None = None,
 ):
     """ Process the data used in the machine learning pipeline.
 
@@ -44,6 +52,9 @@ def process_data(
         passed in.
     """
 
+    if categorical_features is None:
+        categorical_features = []
+
     if label is not None:
         y = X[label]
         X = X.drop([label], axis=1)
@@ -51,7 +62,7 @@ def process_data(
         y = np.array([])
 
     X_categorical = X[categorical_features].values
-    X_continuous = X.drop(categorical_features, axis=1)
+    X_continuous = X.drop(categorical_features, axis=1).to_numpy()
 
     if training is True:
         encoder = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
@@ -59,6 +70,8 @@ def process_data(
         X_categorical = encoder.fit_transform(X_categorical)
         y = lb.fit_transform(y.values).ravel()
     else:
+        if encoder is None or lb is None:
+            raise ValueError("encoder and lb are required when training is False")
         X_categorical = encoder.transform(X_categorical)
         try:
             y = lb.transform(y.values).ravel()

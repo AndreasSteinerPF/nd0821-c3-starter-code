@@ -1,0 +1,34 @@
+{
+  "<=50K": {
+    "age": 31,
+    "workclass": "Self-emp-inc",
+    "fnlgt": 117963,
+    "education": "Doctorate",
+    "education-num": 16,
+    "marital-status": "Never-married",
+    "occupation": "Prof-specialty",
+    "relationship": "Own-child",
+    "race": "White",
+    "sex": "Male",
+    "capital-gain": 0,
+    "capital-loss": 0,
+    "hours-per-week": 40,
+    "native-country": "United-States"
+  },
+  ">50K": {
+    "age": 78,
+    "workclass": "Self-emp-inc",
+    "fnlgt": 385242,
+    "education": "Bachelors",
+    "education-num": 13,
+    "marital-status": "Married-civ-spouse",
+    "occupation": "Exec-managerial",
+    "relationship": "Husband",
+    "race": "White",
+    "sex": "Male",
+    "capital-gain": 9386,
+    "capital-loss": 0,
+    "hours-per-week": 45,
+    "native-country": "United-States"
+  }
+}

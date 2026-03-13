@@ -112,6 +112,8 @@ dmypy.json
 # Models
 *.pkl
 *.joblib
+!starter/model/*.joblib
+starter/model/model.joblib
 *.h5
 *.hdf5
 *.model
@@ -120,6 +122,7 @@ dmypy.json
 # Data files (but keep small sample data)
 *.csv
 !starter/data/census.csv  # Keep the census dataset
+!starter/data/census_clean.csv
 
 # Large data directories
 data/large/
